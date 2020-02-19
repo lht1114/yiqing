@@ -10,7 +10,7 @@ import jsonp from 'jsonp'
 const option = {
     title: {
         text: '疫情实况',
-        subtext: '坚持'
+        subtext: '坚持.'
     },
     series: [{
         name: '确诊人数',
@@ -86,12 +86,12 @@ export default {
     getData () {
         jsonp('https://interface.sina.cn/news/wap/fymap2020_data.d.json?_=1580892522427',{},( err, data) => {
             if (!err) {
-                console.log(data)
+                // console.log(data)
                 let list = data.data.list.map(item => ({name:item.name,value:item.value}))
                 option.series[0].data = list
                 this.myecharts.setOption(option)
             }else {
-                console('。。。')
+                console('错误')
             }
         })
     }
